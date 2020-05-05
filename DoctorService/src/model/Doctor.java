@@ -42,9 +42,17 @@ public class Doctor {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Inserted successfully";
+//				output = "Inserted successfully";
+				
+				String newItems = readDoctors();
+				 output = "{\"status\":\"success\", \"data\": \"" +
+				 newItems + "\"}"; 
+				
 			} catch (Exception e) {
-				output = "Error while inserting the item.";
+//				output = "Error while inserting the item.";
+				
+				 output = "{\"status\":\"error\", \"data\":"
+				 		+ "\"Error while inserting the item.\"}"; 
 				System.err.println(e.getMessage());
 			}
 			return output;
@@ -58,7 +66,7 @@ public class Doctor {
 					return "Error while connecting to the database for reading.";
 				}
 				// Prepare the html table to be displayed
-				output = "<table border=\"1\"><tr><th>Doctor Code</th><th>Doctor Name</th><th>Doctor Charge</th><th>Doctor Description</th><th>Update</th><th>Remove</th></tr>";
+				output = "<table border='1'><tr><th>Doctor Code</th><th>Doctor Name</th><th>Doctor Charge</th><th>Doctor Description</th><th>Update</th><th>Remove</th></tr>";
 				String query = "select * from doctors";
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery(query);
@@ -70,16 +78,20 @@ public class Doctor {
 					String doctorCharge = Double.toString(rs.getDouble("doctorCharge"));
 					String doctorDesc = rs.getString("doctorDesc");
 					// Add into the html table
-					output += "<tr><td><input id=\"hidItemIDUpdate\" name=\"hidItemIDUpdate\"type=\"hidden\" value=\"" + doctorID + "\">"+ doctorCode + "</td>"; 
+					output += "<tr><td><input id='hidItemIDUpdate' name='hidItemIDUpdate' type='hidden' value='" + doctorID + "'>"+ doctorCode + "</td>"; 
 					output += "<td>" + doctorName + "</td>";
 					output += "<td>" + doctorCharge + "</td>";
 					output += "<td>" + doctorDesc + "</td>";
 					
 					// buttons
-					output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"
-							 +"<td><form method=\"post\" action=\"doctors.jsp\">"
-							 +"<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
-							 +"<input name=\"hidItemIDDelete\" type=\"hidden\" value=\"" + doctorID + "\">" + "</form></td></tr>";
+//					output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"
+//							 +"<td><form method=\"post\" action=\"doctors.jsp\">"
+//							 +"<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
+//							 +"<input name=\"hidItemIDDelete\" type=\"hidden\" value=\"" + doctorID + "\">" + "</form></td></tr>";
+					
+					output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
+							+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-itemid='"
+							 + doctorID + "'>" + "</td></tr>"; 
 				}
 				con.close();
 				// Complete the html table
@@ -110,9 +122,17 @@ public class Doctor {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Updated successfully";
+//				output = "Updated successfully";
+				
+				String newItems = readDoctors();
+				 output = "{\"status\":\"success\", \"data\": \"" +
+				 newItems + "\"}";
+				
 			} catch (Exception e) {
-				output = "Error while updating the item.";
+//				output = "Error while updating the item.";
+				
+				 output = "{\"status\":\"error\", \"data\":"
+				 		+ "\"Error while updating the item.\"}"; 
 				System.err.println(e.getMessage());
 			}
 			return output;
@@ -133,9 +153,16 @@ public class Doctor {
 				// execute the statement
 				preparedStmt.execute();
 				con.close();
-				output = "Deleted successfully";
+//				output = "Deleted successfully";
+				
+				 String newItems = readDoctors();
+				 output = "{\"status\":\"success\", \"data\": \"" +
+				 newItems + "\"}"; 
 			} catch (Exception e) {
-				output = "Error while deleting the item.";
+//				output = "Error while deleting the item.";
+				
+				 output = "{\"status\":\"error\", \"data\":"
+				 		+ "\"Error while deleting the item.\"}"; 
 				System.err.println(e.getMessage());
 			}
 			return output;
