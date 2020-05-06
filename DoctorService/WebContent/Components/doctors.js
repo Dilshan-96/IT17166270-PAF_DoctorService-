@@ -128,12 +128,27 @@ function validateItemForm()
 	{
 		return "Insert doctor Code.";
 	}
+	//validate doctor code length
+	var tmpCode =$("#doctorCode").val().trim().length;
+	if (tmpCode>10)
+	{
+		return "Insert doctor Code Out of Length.";
+	}
 	
 	// NAME
 	if ($("#doctorName").val().trim() == "")
 	 {
 		return "Insert doctor Name.";
 	 } 
+	
+	//validate doctor name
+	var tmpName1=$("#doctorName").val().trim();
+	var tmpName2=/^[ a-zA-Z]+$/;
+	if (!tmpName2.test(tmpName1))
+	 {
+		return "Insert valid doctor Name.";
+	 }
+	
 	
 	// PRICE-------------------------------
 	if ($("#doctorCharge").val().trim() == "")
@@ -146,8 +161,17 @@ function validateItemForm()
 	 {
 		return "Insert a numerical value for doctor Charge.";
 	 }
+	
+	//validate doctor charge length
+	var tmpPrice2 =$("#doctorCharge").val().trim().length;
+	if (tmpPrice2>6)
+	{
+		return "Insert doctor Charge Out of Length.";
+	}
+	
 	// convert to decimal price
 	 $("#doctorCharge").val(parseFloat(tmpPrice).toFixed(2));
+	 
 	// DESCRIPTION------------------------
 	if ($("#doctorDesc").val().trim() == "")
 	 {

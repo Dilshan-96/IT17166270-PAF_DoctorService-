@@ -44,8 +44,11 @@ public class DoctorAPI extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String output = doctorObj.insertDoctor(request.getParameter("doctorCode"), request.getParameter("doctorName"),
-				request.getParameter("doctorCharge"), request.getParameter("doctorDesc"));
+		String output = doctorObj.insertDoctor(
+				request.getParameter("doctorCode"), 
+				request.getParameter("doctorName"),
+				request.getParameter("doctorCharge"), 
+				request.getParameter("doctorDesc"));
 
 		response.getWriter().write(output);
 	}
