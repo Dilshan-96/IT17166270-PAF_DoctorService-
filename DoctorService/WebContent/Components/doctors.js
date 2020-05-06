@@ -29,7 +29,7 @@ $(document).on("click", "#btnSave", function(event) {
 	{
 			 url : "DoctorAPI",
 			 type : type,
-			 data : $("#formItem").serialize(),
+			 data : $("#formDoctor").serialize(),
 			 dataType : "text",
 			 complete : function(response, status)
 			 {
@@ -63,7 +63,7 @@ function onItemSaveComplete(response, status)
 		$("#alertError").show();
 	}
 	$("#hidItemIDSave").val("");
-	$("#formItem")[0].reset();
+	$("#formDoctor")[0].reset();
 }
 
 
@@ -151,7 +151,7 @@ function validateItemForm()
 	// DESCRIPTION------------------------
 	if ($("#doctorDesc").val().trim() == "")
 	 {
-		return "Insert doctor Desc.";
+		return "Insert doctor Description.";
 	 }
 	return true;
 }

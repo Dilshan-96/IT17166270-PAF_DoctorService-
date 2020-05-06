@@ -84,11 +84,6 @@ public class Doctor {
 					output += "<td>" + doctorDesc + "</td>";
 					
 					// buttons
-//					output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td>"
-//							 +"<td><form method=\"post\" action=\"doctors.jsp\">"
-//							 +"<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\">"
-//							 +"<input name=\"hidItemIDDelete\" type=\"hidden\" value=\"" + doctorID + "\">" + "</form></td></tr>";
-					
 					output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary'></td>"
 							+ "<td><input name='btnRemove' type='button' value='Remove' class='btnRemove btn btn-danger' data-itemid='"
 							 + doctorID + "'>" + "</td></tr>"; 
